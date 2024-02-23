@@ -1,5 +1,5 @@
 # Vorbereitung 🛠️
-- git installieren 🐙
+- Git installieren 🐙
 - `sudo apt-get update`
 - `sudo apt install git -y`
 - SSH Key generieren
