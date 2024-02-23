@@ -15,7 +15,7 @@
 
 # Installation 💻
 - `cd HydroFlux`
-- `docker compose up -d`
+- `docker-compose up -d`
 - Wenn alles gestartet ist, muss telegraf eingerichtet werden. Dazu influx db unter: `http://<PI_IP>:8086` aufrufen 🌐
 - GetStarted
 - Nutzernamen, Passwort, Organisation und Bucketname eintragen:
