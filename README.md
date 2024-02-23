@@ -1,7 +1,17 @@
 # Vorbereitung 🛠️
-- docker installieren 🐳
 - git installieren 🐙
+- `sudo apt-get update`
+- `sudo apt install git -y`
+- SSH Key generieren
+  - https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+  - den key dann in GitHub unter Settings -> SSH and GPG keys ablegen
 - Repository mit SSH klonen 🔑
+  - `git clone git@github.com:pns-solutions/HydroFlux.git`
+- Docker installieren 🐳
+  - `chmod +x ./scripts/install-docker.sh && chmod +x ./scripts/start-docker.sh`
+  - `./scripts/install-docker.sh`
+  - Wenn das Script fertig ist, was ein paar Minuten dauern kann, wird der Raspberry Pi neu gestartet. Nach 1–2 Minuten muss sich dann wieder via SSH (siehe Schritt 2) auf dem PI eingeloggt werden und mittels cd (siehe Schritt 6) in das Verzeichnis vom Projekt gewechselt werden.
+  - `./scripts/start-docker.sh`
 
 # Installation 💻
 - `cd HydroFlux`
