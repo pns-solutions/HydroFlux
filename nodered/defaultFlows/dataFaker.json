@@ -1,0 +1,262 @@
+[
+  {
+    "id": "c08c97e957e0cba0",
+    "type": "tab",
+    "label": "DataFaker",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "0eaa62e1a6e86caf",
+    "type": "inject",
+    "z": "c08c97e957e0cba0",
+    "name": "EC",
+    "props": [],
+    "repeat": "1",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 110,
+    "y": 60,
+    "wires": [
+      [
+        "89c854edbe978763"
+      ]
+    ]
+  },
+  {
+    "id": "b12dac8a833e7c96",
+    "type": "mqtt out",
+    "z": "c08c97e957e0cba0",
+    "name": "",
+    "topic": "df/EC",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "e42a6222ade22f06",
+    "x": 530,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "e015125b2e46328d",
+    "type": "mqtt in",
+    "z": "c08c97e957e0cba0",
+    "name": "",
+    "topic": "df/EC",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "e42a6222ade22f06",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 670,
+    "y": 60,
+    "wires": [
+      [
+        "27124c019dc7acde"
+      ]
+    ]
+  },
+  {
+    "id": "27124c019dc7acde",
+    "type": "debug",
+    "z": "c08c97e957e0cba0",
+    "name": "EC Sub",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 800,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "0a11152e9f95960e",
+    "type": "function",
+    "z": "c08c97e957e0cba0",
+    "name": "flatten & round",
+    "func": "var oldValue = context.get('oldValue') || 0.0;\nvar newValue = msg.payload;\n\ncalculatedValue = parseFloat((oldValue * 49 + newValue) / 50).toFixed(1);\n//calculatedValue = parseFloat(calculatedValue).toFixed(1);\n\ncontext.set('oldValue',calculatedValue); // to store a variable\nmsg.payload = calculatedValue;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 380,
+    "y": 60,
+    "wires": [
+      [
+        "b12dac8a833e7c96"
+      ]
+    ]
+  },
+  {
+    "id": "bb646d021f10e575",
+    "type": "inject",
+    "z": "c08c97e957e0cba0",
+    "name": "PH",
+    "props": [],
+    "repeat": "1",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 110,
+    "y": 120,
+    "wires": [
+      [
+        "712d780135386e60"
+      ]
+    ]
+  },
+  {
+    "id": "d51c9e63d1aee63f",
+    "type": "mqtt out",
+    "z": "c08c97e957e0cba0",
+    "name": "",
+    "topic": "df/PH",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "e42a6222ade22f06",
+    "x": 530,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "3ec49329e6c2c2c6",
+    "type": "mqtt in",
+    "z": "c08c97e957e0cba0",
+    "name": "",
+    "topic": "df/PH",
+    "qos": "2",
+    "datatype": "auto",
+    "broker": "e42a6222ade22f06",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 670,
+    "y": 120,
+    "wires": [
+      [
+        "bc79fc9e8e812f4d"
+      ]
+    ]
+  },
+  {
+    "id": "bc79fc9e8e812f4d",
+    "type": "debug",
+    "z": "c08c97e957e0cba0",
+    "name": "PH Sub",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 800,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "c48b0d3ff981c265",
+    "type": "function",
+    "z": "c08c97e957e0cba0",
+    "name": "flatten & round",
+    "func": "var oldValue = context.get('oldValue') || 0.0;\nvar newValue = msg.payload;\n\ncalculatedValue = parseFloat((oldValue * 49 + newValue) / 50).toFixed(1);\n//calculatedValue = parseFloat(calculatedValue).toFixed(1);\n\ncontext.set('oldValue',calculatedValue); // to store a variable\nmsg.payload = calculatedValue;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 380,
+    "y": 120,
+    "wires": [
+      [
+        "d51c9e63d1aee63f"
+      ]
+    ]
+  },
+  {
+    "id": "89c854edbe978763",
+    "type": "random",
+    "z": "c08c97e957e0cba0",
+    "name": "rand",
+    "low": 1,
+    "high": "500",
+    "inte": "false",
+    "property": "payload",
+    "x": 230,
+    "y": 60,
+    "wires": [
+      [
+        "0a11152e9f95960e"
+      ]
+    ]
+  },
+  {
+    "id": "712d780135386e60",
+    "type": "random",
+    "z": "c08c97e957e0cba0",
+    "name": "rand",
+    "low": 1,
+    "high": "50",
+    "inte": "false",
+    "property": "payload",
+    "x": 230,
+    "y": 120,
+    "wires": [
+      [
+        "c48b0d3ff981c265"
+      ]
+    ]
+  },
+  {
+    "id": "e42a6222ade22f06",
+    "type": "mqtt-broker",
+    "name": "",
+    "broker": "http://mosquitto:8883",
+    "port": "1883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "autoUnsubscribe": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthRetain": "false",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closeRetain": "false",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willRetain": "false",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": ""
+  }
+]
