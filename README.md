@@ -1,7 +1,7 @@
 # Vorbereitung 🛠️
 - Git installieren 🐙
-- `sudo apt-get update`
-- `sudo apt install git -y`
+  - `sudo apt-get update`
+  - `sudo apt install git -y`
 - SSH Key generieren
   - https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
   - den key dann in GitHub unter Settings -> SSH and GPG keys ablegen
